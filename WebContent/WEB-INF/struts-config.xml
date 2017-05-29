@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts 
+Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="nguoiDungForm" type="form.NguoiDungForm" />
+		<form-bean name="danhSachHangHoaForm" type="form.DanhSachHangHoaForm" />
+		<form-bean name="hangHoaForm" type="form.HangHoaForm" />
+		<form-bean name="danhSachHoaDonForm" type="form.DanhSachHoaDonForm" />
+		<form-bean name="hoaDonForm" type="form.HoaDonForm" />
+		<form-bean name="ajaxThemHoaDonForm" type="form.AjaxThemHoaDonForm" />
+		<form-bean name="danhSachNCCForm" type="form.DanhSachNCCForm"/>
+		<form-bean name="nCCForm" type="form.NCCForm"/>
+		<form-bean name="danhSachKHForm" type="form.DanhSachKHForm"/>
+		<form-bean name="kHForm" type="form.KHForm"/>
+		<form-bean name="danhSachChiTietHoaDonForm" type="form.DanhSachChiTietHoaDonForm" />
+		<form-bean name="danhSachLoaiHangForm" type="form.DanhSachLoaiHangForm" />
+		<form-bean name="loaiHangForm" type="form.LoaiHangForm"/>
+		<form-bean name="danhSachNhanVienForm" type="form.DanhSachNhanVienForm"/>
+		<form-bean name="nhanVienForm" type="form.NhanVienForm"/>
+		<form-bean name="hoaDonRPForm" type="form.HoaDonRPForm"/>
+		<form-bean name="rpThongKeForm" type="form.RpThongKeForm"/>
+		<form-bean name="thongKeForm" type="form.ThongKeForm"/>
+		
+	</form-beans>
+	<action-mappings>
+	
+	
+		<action input="/dangNhap.jsp" name="nguoiDungForm"
+			path="/dang-nhap" scope="request" type="action.NguoiDungAction">
+			<forward name="admin" path="/homeAdmin.jsp"/>
+			<forward name="nhanvien" path="/home.jsp"/>
+			<forward name="thatBai" path="/dangNhap.jsp" />
+		</action>
+		
+		
+<!-- 		HANG HOA -->	
+		<action input="/dangNhap.jsp" name="danhSachHangHoaForm"
+			path="/danh-sach" scope="request" type="action.DanhSachHangHoaAction">
+			<forward name="dsHangHoa" path="/danhSachHangHoa.jsp" />
+			<forward name="themHangHoaxong" path="/danh-sach.do" redirect="true"/>
+			<forward name="themHangHoaerror" path="/danh-sach.do" />
+		</action>
+		
+		<action input="/capNhatHangHoa.jsp" name="hangHoaForm"
+			path="/capNhatHH" scope="request" type="action.CapNhatHangHoaAction">
+			<forward name="suaHangHoa" path="/capNhatHangHoa.jsp" />
+			<forward name="suaHangHoaxong" path="/danh-sach.do" redirect="true" />
+			<forward name="suaHangHoaerror" path="/capNhatHangHoa.jsp" />
+		</action>
+		
+		<action input="/dangNhap.jsp" name="danhSachHangHoaForm"
+			path="/xoaHH" scope="request" type="action.XoaHangHoaAction">
+			<forward name="xoaHangHoaxong" path="/danh-sach.do" redirect="true"/>
+		</action>
+		
+		
+<!-- 		HOA DON -->
+		<action input="/danhSachHoaDon.jsp" name="danhSachHoaDonForm"
+			path="/danh-sach-hoa-don" scope="request" type="action.DanhSachHoaDonAction">
+			<forward name="dsHoaDon" path="/danhSachHoaDon.jsp" />
+			</action>
+		<action input="/themHoaDon.jsp" name="hoaDonForm"
+			path="/themHoaDon" scope="request" type="action.ThemHoaDonAction" validate="true">
+			<forward name="themHoaDon" path="/themHoaDon.jsp" />
+			<forward name="themHoaDonerror" path="/themHoaDon.jsp" />
+			<forward name="themHoaDonxong" path="/danh-sach-hoa-don.do" redirect="true"/>
+		</action>
+		
+<!-- 		<action input="/themPX.jsp" name="pXForm" -->
+<!-- 			path="/themPX" scope="request" type="action.themPXAction" validate="true"> -->
+<!-- 			<forward name="themPX" path="/themPX.jsp" /> -->
+<!-- 			<forward name="themPXerror" path="/themPX.jsp" /> -->
+<!-- 			<forward name="themPXxong" path="/px.do" redirect="true"/> -->
+<!-- 		</action> -->
+		
+		<action name="ajaxThemHoaDonForm" input=""
+			path="/ajaxThemHoaDon" scope="request" type="action.AjaxThemHoaDonAction">
+		</action>
+		
+		
+		<action input="/danhSachChiTietHoaDon.jsp" name="danhSachChiTietHoaDonForm"
+			path="/danh-sachCTHD" scope="request" type="action.DanhSachChiTietHoaDonAction">
+			<forward name="dsChiTietHoaDon" path="/danhSachChiTietHoaDon.jsp" />
+			</action>
+			
+			<action input="/dangNhap.jsp" name="danhSachHoaDonForm"
+			path="/xoaCTHD" scope="request" type="action.XoaHoaDonAction">
+			<forward name="xoaHoaDonxong" path="/danh-sach-hoa-don.do" redirect="true"/>
+		</action>
+		
+		<!-- 		SHOW HOA DON REPORT + THONG KE RP -->	
+		
+		<action input="/hoaDonRP.jsp" name="hoaDonRPForm"
+			path="/report" scope="request" type="action.HoaDonRPAction">
+			<forward name="report" path="/hoaDonRP.jsp" />
+			</action>
+		
+		<action input="/rpThongKe.jsp" name="rpThongKeForm"
+			path="/reportTK" scope="request" type="action.RpThongKeAction">
+			<forward name="reportTK" path="/rpThongKe.jsp" />
+			</action>
+		
+			
+<!-- 		NHA CUNG CAP AND KHACH HANG -->	
+		
+		<action name="danhSachNCCForm"
+			path="/danh-sachNCC" scope="request" type="action.DanhSachNCCAction">
+			<forward name="dsNCC" path="/danhSachNCC.jsp" />
+		</action>
+		
+	<action input="/themNCC.jsp" name="nCCForm"
+			path="/themNCC" scope="request" type="action.ThemNCCAction" >
+			<forward name="themNCC" path="/themNCC.jsp" />
+			<forward name="themNCCxong" path="/danh-sachNCC.do" redirect="true"/>
+	</action>
+		
+		<action input="/suaNCC.jsp" name="nCCForm"
+			path="/suaNCC" scope="request" type="action.SuaNCCAction" >
+			<forward name="capNhatNCC" path="/suaNCC.jsp" />
+			<forward name="capNhatNCCxong" path="/danh-sachNCC.do" redirect="true"/>
+	</action>
+	<action input="/xoaNCC.jsp" name="nCCForm"
+			path="/xoaNCC" scope="request" type="action.XoaNCCAction" >
+			<forward name="xoaNCC" path="/xoaNCC.jsp" />
+			<forward name="xoaNCCxong" path="/danh-sachNCC.do" redirect="true"/>
+	</action>
+	
+		<action name="danhSachKHForm"
+			path="/danh-sachKH" scope="request" type="action.DanhSachKHAction">
+			<forward name="dsKH" path="/danhSachKH.jsp" />
+		</action>
+		<action input="/themKH.jsp" name="kHForm"
+			path="/themKH" scope="request" type="action.ThemKHAction" >
+			<forward name="themKH" path="/themKH.jsp" />
+			<forward name="themKHxong" path="/danh-sachKH.do" redirect="true"/>
+	</action>
+		<action input="/suaKH.jsp" name="kHForm"
+			path="/suaKH" scope="request" type="action.SuaKHAction" >
+			<forward name="capNhatKH" path="/suaKH.jsp" />
+			<forward name="capNhatKHxong" path="/danh-sachKH.do" redirect="true"/>
+	</action>
+			<action input="/xoaKH.jsp" name="kHForm"
+			path="/xoaKH" scope="request" type="action.XoaKHAction" >
+			
+			<forward name="xoaKHxong" path="/danh-sachKH.do" redirect="true"/>
+			
+			
+	</action>
+		
+		
+<!-- 	Loai Hang -->
+
+		<action name="danhSachLoaiHangForm"
+			path="/danh-sach-loai-hang" scope="request" type="action.DanhSachLoaiHangAction">
+			<forward name="dsLoaiHang" path="/danhSachLoaiHang.jsp" />
+		</action>
+		<action input="/capNhatLoaiHang.jsp" name="loaiHangForm"
+			path="/capNhatLH" scope="request" type="action.CapNhatLoaiHangAction">
+			<forward name="capNhatLoaiHang" path="/capNhatLoaiHang.jsp" />
+			<forward name="capNhatLoaiHangxong" path="/danh-sach-loai-hang.do" redirect="true" />
+		</action>
+		
+		<action input="/themLoaiHang.jsp" name="loaiHangForm"
+			path="/themLoaiHang" scope="request" type="action.ThemLoaiHangAction" >
+			<forward name="themLoaiHang" path="/themLoaiHang.jsp" />
+			<forward name="themLoaiHangxong" path="/danh-sach-loai-hang.do" redirect="true"/>
+		</action>
+		
+			<action input="/danhSachLoaiHang.jsp" name="loaiHangForm"
+			path="/xoaLoaiHang" scope="request" type="action.XoaLoaiHangAction" >			
+			<forward name="xoaLoaiHangxong" path="/danh-sach-loai-hang.do" redirect="true"/>
+			</action>
+		
+	<!-- 	Nhanvien -->	
+		
+		<action input="/dangNhap.jsp" name="danhSachNhanVienForm"
+			path="/danh-sach-nhan-vien" scope="request" type="action.DanhSachNhanVienAction2">
+			<forward name="nhanvien" path="/danh-sach-nhan-vien-hc.do" />
+			<forward name="dsNhanVien" path="/danhSachNhanVien.jsp" />
+		</action>
+		
+		<action input="/dangNhap.jsp" name="danhSachNhanVienForm"
+			path="/danh-sach-nhan-vien-hc" scope="request" type="action.DanhSachNhanVienHCAction">
+			<forward name="nhanvien" path="/danhSachNhanVienHanChe.jsp" />
+			<forward name="dsNhanVien" path="/danh-sach-nhan-vien.do" />
+		</action>
+		
+		<action input="/themNV.jsp" name="nhanVienForm"
+			path="/themNV" scope="request" type="action.ThemNhanVienAction" >
+			<forward name="themNV" path="/themNhanVien.jsp" />
+			<forward name="themNVxong" path="/danh-sach-nhan-vien.do" redirect="true"/>
+	</action>
+	
+	<action input="/capNhatNhanVien.jsp" name="nhanVienForm"
+			path="/capNhatNV" scope="request" type="action.CapNhatNhanVienAction">
+			<forward name="capNhatNV" path="/capNhatNhanVien.jsp" />
+			<forward name="capNhatNVxong" path="/danh-sach-nhan-vien.do" redirect="true" />
+			<forward name="thatBai" path="/dangNhap.jsp" />
+		</action>
+		
+		
+		<action input="/danhSachNhanVien.jsp" name="nhanVienForm"
+			path="/xoaNV" scope="request" type="action.XoaNhanVienAction" >			
+			<forward name="xoaNVxong" path="/danh-sach-nhan-vien.do" redirect="true"/>
+			</action>
+		
+			<!-- 	thống kê -->	
+		
+		<action name="thongKeForm"
+			path="/thongke" scope="request" type="action.ThongKeAction">
+			<forward name="thongke" path="/thongKe.jsp" />
+			<forward name="reportTK" path="/rpThongKe.jsp" />
+			<forward name="reportTKNV" path="/rpTKNhanVien.jsp" />
+			</action>
+			
+			
+			<action name="thongKeForm"
+			path="/thongkeNV" scope="request" type="action.RpTKNhanVienAction">
+			<forward name="thongke" path="/thongKe.jsp" />
+			<forward name="reportTKNV" path="/rpTKNhanVien.jsp" />
+			</action>
+			
+			
+			<action name="thongKeForm"
+			path="/thongkeDSNV" scope="request" type="action.RpThongKeDSNVAction">
+			<forward name="thongke" path="/thongKe.jsp" />
+			<forward name="thongkeDSNV" path="/rpThongKeDSNV.jsp" />
+			</action>
+				
+			<action input="/rpThongKe.jsp" name="rpThongKeForm"
+			path="/reportTK" scope="request" type="action.RpThongKeAction">
+			<forward name="reportTK" path="/rpThongKe.jsp" />
+			</action>
+				
+			<action input="/rpTKNhanVien.jsp" name="rpThongKeForm"
+			path="/reportTKNV" scope="request" type="action.RpTKNhanVienAction">
+			<forward name="reportTKNV" path="/rpTKNhanVien.jsp" />
+			</action>
+		
+		
+		
+			</action-mappings>
+	<message-resources parameter="action.ApplicationResources" />
+	
+</struts-config>

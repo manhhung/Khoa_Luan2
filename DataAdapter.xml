@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jdbcDataAdapter class="net.sf.jasperreports.data.jdbc.JdbcDataAdapterImpl"><name>QLBGSQL</name><driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver><username>sa</username><password>admin123</password><savePassword>true</savePassword><url>jdbc:sqlserver://localhost:1433;databaseName=QLBG</url><database></database><serverAddress></serverAddress><classpath>E:\FPT SOFTWARE\sqljdbc_4.0\sqljdbc_4.0\enu\sqljdbc4.jar</classpath></jdbcDataAdapter>
